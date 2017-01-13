@@ -1,0 +1,125 @@
+{% load compress staticfiles %}
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6" ng-app="app.core"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7" ng-app="app.core"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8" ng-app="app.core"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9" ng-app="app.core"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js" ng-app="app.core"> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicons/favicon.ico' %}" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'images/favicons/apple-touch-icon-114x114-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static '/apple-touch-icon-72x72-precomposed.png' %}">
+  <link rel="apple-touch-icon-precomposed" href="{% static '/apple-touch-icon-57x57-precomposed.png' %}">
+
+  <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  <!--[if lt IE 9]><script src="./js/libs/respond.min.js"></script><![endif]-->
+  <!--[if gte IE 9]><style type="text/css">.gradient {filter: none !important;}</style><![endif]-->
+
+
+  <link src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.css">
+  <link src="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.9/c3.min.css">
+
+  {% compress css %}
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}" media="screen" >
+  <link rel="stylesheet" href="{% static 'css/animate/animate.css' %}" media="screen" >
+  <link rel="stylesheet" href="{% static 'css/cusel/cusel.css' %}" media="screen" >
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+  <link rel="stylesheet" href="{% static 'css/print.css' %}" media="print" >
+
+  {% block extra_css %}{% endblock %}
+  {% endcompress %}
+
+  {% compress js %}
+  {% endcompress %}
+
+  {% block extra_js %}{% endblock %}
+
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55946939-2', 'auto');
+  ga('send', 'pageview');
+
+  </script>
+</head>
+
+<body ng-controller="AppController">
+  {% block header %}
+  {% include "includes/header.html" %}
+  {% endblock %}
+
+  {% block main_content %}
+  <div class="container">
+      {% if messages %}
+          <div class="messages">
+              {% for message in messages %}
+                  <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{ message }}
+                  </div>
+              {% endfor %}
+          </div>
+      {% endif %}
+  </div>
+
+  <section class="section-box margin-vertical-50">
+    <div class="container">
+        {% block main %}{% endblock %}
+    </div>
+  </section>
+  {% endblock %}
+
+  {% block footer %}
+  {% include "includes/footer.html" %}
+  {% endblock %}
+
+  <!-- JS Libs -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.4/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+
+  <script src="{% static 'js/includes/moment.min.js' %}"></script>
+  <script src="{% static 'js/includes/combodate.js' %}"></script>
+  <script src="{% static 'js/includes/strength.min.js' %}"></script>
+
+  <script src="{% static 'js/lodash.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/includes/ckeditor/ckeditor.js' %}?v=2.3.4"></script>
+  <script src="{% static 'js/includes/human-api-connect.js' %}"></script>
+  <script src="{% static 'js/forms/cusel-min.js' %}"></script>
+  <script src="{% static 'js/forms/jquery.customInput.js' %}"></script>
+  <script src="{% static 'js/forms/jquery.placeholder.js' %}"></script>
+  <script src="{% static 'js/forms/image_uploader.js' %}"></script>
+
+  <!--/ JS Libs -->
+
+  <script src="{% static 'js/includes/ui-bootstrap-custom-0.12.0.min.js' %}"></script>
+  <script src="{% static 'js/includes/ui-bootstrap-custom-tpls-0.12.0.min.js' %}"></script>
+  <script src="{% static 'js/includes/angular-ui-tree.min.js' %}"></script>
+  <script src="{% static 'js/includes/angular-timer.min.js' %}"></script>
+  <script src="{% static 'js/includes/humanize-duration.js' %}"></script>
+
+
+
+  <script src="{% static 'public/js/angularCustom.js' %}?v=2.3.5"></script>
+
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

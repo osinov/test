@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% load compress staticfiles %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block body_id %}account{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+<li>{{ title }}</li>
+{% endblock %}
+
+{% block extra_js %}
+<script language='JavaScript'>
+	var OB_ADV_ID=35110;
+	var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+	var str = '<script src="'+scheme+'widgets.outbrain.com/obtp.js" type="text/javascript"><\/script>';
+		document.write(str);
+</script>
+{% endblock %}
+
+{% block header %}
+{% include "includes/header.html" %}
+
+{% endblock %}
+
+{% block main_content %}
+
+<!-- Tooltip -->
+<div class="tooltip top animated print-hidden" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner"><!-- --></div>
+</div>
+<!--/ Tooltip -->
+<div  ng-controller="B2BDashboardController as b2bCtrl">
+<!-- Topbar -->
+{% include "includes/b2b_topbar.html" %}
+
+<!-- Left Navbar -->
+{% include "includes/b2b_navbar.html" %}
+
+<!-- Main Content -->
+<section class="main container-fluid" ng-init="b2bCtrl.initCompany('{{ company_id }}','{{ company_name }}','{{ company_size }}', '{{ firstname }}', '{{ lastname }}','{{ industry }}')">
+  <span style="height:100%; width:100%; position:absolute;" class="section-loading-icon" ng-show="sectionLoading">
+    <img src="/static/images/chart-loader.gif" alt="Loading..." />
+  </span>
+  <div class="row">
+
+    <!-- main section -->
+    <div class="col-md-12">
+
+      <!-- content-->
+      <div class="content content-dashboard b2b" role="main">
+
+        <div>
+          <!-- section display -->
+          <div class="section-content" compile="section.content"></div>
+          <span class="section-error">[[errorSection]]</span>
+
+        </div>
+        <!--/ postlist-->
+
+      </div>
+      <!--/ content-->
+
+    </div>
+    <!--/ main section -->
+
+  </div>
+
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="b2b-fake-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Your business dashboard preview</h4>
+            </div>
+            <div class="modal-body">
+                <p>Our business dashboard enables you to track your overall business health score, cardiovascular risk, stress, energy and more over time. Data is anonymised but can be filtered by age group. Risk analysis and mitigation recommendations are provided by our doctors.</p>
+                <p>N.B. All of this data has been generated to demonstrate how your business dashboard will work.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--/ Main Content -->
+{% if results|length or request.user.is_doctor %}
+
+{% include "modals/blood_component_info.html" %}
+
+{% else %}
+
+{% include "modals/blood_method_info.html" %}
+
+{% endif %}
+
+{% include "modals/upload_picture.html" %}
+
+{% endblock %}
+
+{% block footer %}
+<div class="profile-footer">
+{% include "includes/footer.html" %}
+</div>
+{% endblock %}

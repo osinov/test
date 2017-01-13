@@ -1,0 +1,334 @@
+/* Icons */
+.fa {
+  padding-right:5px;
+  padding-left:5px;
+}
+.fa-gbp {
+  color:orange;
+}
+.fa-file-text {
+  color: gray;
+}
+.fa-ambulance {
+  color: gray;
+}
+.fa-medkit {
+  color: #DE2B31;
+}
+.fa-tint {
+  color: #800A00;
+}
+.fa-bar-chart {
+  color: blue;
+}
+.fa-user-md {
+  color: gray;
+}
+.fa-check {
+  color: green;
+}
+.fa-times {
+  color: red;
+}
+.fa-arrow-right {
+  color: green;
+}
+.fa-exclamation-triangle {
+  color:orange;
+}
+
+#result_list td {
+  padding: 5px;
+}
+
+#result_list th {
+  padding: 5px;
+}
+
+.hidden {
+  display:none;
+}
+
+.add-problem {
+  float:right;
+}
+
+.problems-problem-other, .problems-action-other {
+  margin-left:5px;
+}
+
+body {
+  font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+div.hover-box {
+  background:#F8F8F8;
+  border: 3px solid #DFDFDF;
+  color: #717171;
+  font-size: 12px;
+  line-height: 20px;
+  position: absolute;
+  top: -80px;
+  left:-30px;
+  display:none;
+  padding:5px 20px;
+  width:280px;
+}
+div.small-hover-box {
+  width:170px;
+  text-align:center;
+}
+div.hover-box:after{
+  content:'';
+  position:absolute;
+  bottom:-10px; 
+  width:10px;
+  height:10px;
+  border-bottom:3px solid #dfdfdf;
+  border-right:3px solid #dfdfdf;
+  background:#f8f8f8;
+  left:50%;
+  margin-left:-10px;
+  -moz-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+}
+
+.hover-trigger {
+  cursor:default;
+}
+
+.close-button-container {
+  float:right;
+}
+
+.component-title {
+  line-height: 32px;
+}
+
+button.close-button-btn {
+  line-height:32px !important;
+  width:32px;
+  height:32px;
+}
+button.close-button-btn span {
+  line-height: 32px;
+  height: 32px;
+}
+
+span.close-button-label {
+  padding-right:5px;
+  line-height:32px;
+}
+
+.block-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width:50%;
+  display:block;
+}
+
+.modal {
+  text-align: center;
+}
+
+.modal:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.btn {
+  display:inline-block;
+  padding: 0;
+  border: 0 none;
+  border-radius: 0;
+  &:hover, &:focus {
+    -webkit-transition: background-position .0s linear;
+    -moz-transition: background-position .0s linear;
+    -o-transition: background-position .0s linear;
+    transition: background-position .0s linear;
+  }
+  &:active, &.active {
+    box-shadow: none;
+  }
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    background-color: transparent;
+    color:#fff;
+  }
+  span, input {
+    display: block;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    text-shadow:none;
+    background-color: $color-turquoise;
+    border: 0 none;
+    background-image: url(../images/icons/button-icons.png);
+    background-repeat: no-repeat;
+    background-position: -300px -300px;
+  }
+}
+
+h1 {
+    font-size: 18px;
+    color: #666;
+    padding: 0 6px 0 0;
+    margin: 0 0 .2em 0;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
+button.close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+.modal-open {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+       -o-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #000;
+}
+.modal-backdrop.fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+.modal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-header .close {
+  margin-top: -2px;
+}
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+
+.form-row.field-landing_content label {
+  float: none !important;
+  width: 100% !important;
+  padding-bottom: 5px;
+}
+
+.form-row.field-email_on_visible_content label {
+  float: none !important;
+  width: 100% !important;
+  padding-bottom: 5px;
+}
+
+.company-email-address {
+  width: 220px;
+}
